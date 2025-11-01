@@ -28,7 +28,7 @@ export const metadata: Metadata = {
       "Discover your perfect style with AI-curated clothing rentals. Effortless fashion, delivered monthly.",
     images: [
       {
-        url: "/thumbnail-04.png",
+        url: "https://taelor-demo.vercel.app/thumbnail-04.png",
         width: 1200,
         height: 630,
         alt: "Taelor.ai - AI-Powered Menswear",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     title: "Taelor.ai - AI-Powered Styling for Modern Men",
     description:
       "Discover your perfect style with AI-curated clothing rentals. Effortless fashion, delivered monthly.",
-    images: ["/thumbnail-04.png"],
+    images: ["https://taelor-demo.vercel.app/thumbnail-04.png"],
   },
 };
 
