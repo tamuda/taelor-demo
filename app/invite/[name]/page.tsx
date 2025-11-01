@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import { Metadata } from "next";
 import { SiteHeader } from "@/components/site-header";
 import { HeroSection } from "@/components/hero-section";
 import { LifestyleTabs } from "@/components/lifestyle-tabs";
@@ -16,7 +16,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const name = params.name.toUpperCase();
-  
+
   return {
     title: `${name} - Join Taelor.ai`,
     description: `${name}, discover your perfect style with AI-curated clothing rentals.`,
@@ -60,4 +60,3 @@ export default function InvitePage({ params }: Props) {
     </div>
   );
 }
-
