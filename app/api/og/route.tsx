@@ -9,8 +9,10 @@ export async function GET(req: NextRequest) {
     const name = searchParams.get("name") || "WELCOME";
 
     // Fetch the base image
-    const baseImageUrl = new URL('/thumbnail-04.png', req.url).toString();
-    
+    const baseImageUrl = new URL("/thumbnail-04.png", req.url).toString();
+    const imageData = await fetch(baseImageUrl).then((res) => res.arrayBuffer());
+    const base64Image = Buffer.from(imageData).toString('base64');
+
     return new ImageResponse(
       (
         <div
@@ -18,14 +20,22 @@ export async function GET(req: NextRequest) {
             height: "100%",
             width: "100%",
             display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "flex-start",
-            background: "linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)",
             position: "relative",
           }}
         >
-          {/* Background overlay */}
+          {/* Base image */}
+          <img
+            src={`data:image/png;base64,${base64Image}`}
+            alt="Background"
+            style={{
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+          />
+
+          {/* Semi-transparent overlay for text readability */}
           <div
             style={{
               position: "absolute",
@@ -33,74 +43,37 @@ export async function GET(req: NextRequest) {
               left: 0,
               right: 0,
               bottom: 0,
-              background: "linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6))",
+              background: "linear-gradient(to bottom, rgba(0,0,0,0.2), transparent 40%)",
               display: "flex",
             }}
           />
-          
-          {/* Name at top */}
+
+          {/* Name at top center */}
           <div
             style={{
               display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
               position: "absolute",
-              top: 60,
+              top: 40,
               left: 0,
               right: 0,
-              zIndex: 10,
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
             <div
               style={{
-                fontSize: 80,
+                fontSize: 90,
                 fontWeight: 900,
-                background: "linear-gradient(90deg, #d4af37 0%, #f4e5b1 50%, #d4af37 100%)",
-                backgroundClip: "text",
-                color: "transparent",
+                color: "#d4af37",
                 textAlign: "center",
                 textTransform: "uppercase",
                 letterSpacing: "0.15em",
-                padding: "30px 60px",
+                textShadow: "0 4px 12px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.6)",
                 display: "flex",
+                padding: "20px 40px",
               }}
             >
               {name}
-            </div>
-          </div>
-
-          {/* Brand text at bottom */}
-          <div
-            style={{
-              position: "absolute",
-              bottom: 60,
-              left: 0,
-              right: 0,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: 20,
-            }}
-          >
-            <div
-              style={{
-                fontSize: 48,
-                fontWeight: 700,
-                color: "white",
-                display: "flex",
-              }}
-            >
-              Join Taelor.ai
-            </div>
-            <div
-              style={{
-                fontSize: 28,
-                color: "rgba(255,255,255,0.8)",
-                display: "flex",
-              }}
-            >
-              AI-Powered Style for Modern Men
             </div>
           </div>
         </div>
@@ -109,8 +82,8 @@ export async function GET(req: NextRequest) {
         width: 1200,
         height: 630,
         headers: {
-          'Cache-Control': 'public, max-age=31536000, immutable',
-          'Content-Type': 'image/png',
+          "Cache-Control": "public, max-age=31536000, immutable",
+          "Content-Type": "image/png",
         },
       }
     );
