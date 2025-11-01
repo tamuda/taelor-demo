@@ -17,9 +17,29 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://taelor-demo.vercel.app"),
   title: "Taelor.ai - AI-Powered Style for Modern Men",
   description: "Discover your perfect style with AI-curated clothing rentals. Effortless fashion, delivered monthly.",
   generator: "v0.app",
+  openGraph: {
+    title: "Taelor.ai - AI-Powered Style for Modern Men",
+    description: "Discover your perfect style with AI-curated clothing rentals. Effortless fashion, delivered monthly.",
+    images: [
+      {
+        url: "/thumbnail-04.png",
+        width: 1200,
+        height: 630,
+        alt: "Taelor.ai - AI-Powered Menswear",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Taelor.ai - AI-Powered Style for Modern Men",
+    description: "Discover your perfect style with AI-curated clothing rentals. Effortless fashion, delivered monthly.",
+    images: ["/thumbnail-04.png"],
+  },
 }
 
 export default function RootLayout({
