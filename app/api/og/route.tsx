@@ -16,48 +16,50 @@ export async function GET(req: NextRequest) {
             width: "100%",
             display: "flex",
             position: "relative",
-            backgroundImage: "url(https://taelor-demo.vercel.app/thumbnail.png)",
-            backgroundSize: "cover",
+            backgroundImage:
+              "url(https://taelor-demo.vercel.app/thumbnail.png)",
+            backgroundSize: "100% 100%",
             backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
           }}
         >
-          {/* Text content */}
+          {/* Text content on the right */}
           <div
             style={{
               display: "flex",
               flexDirection: "column",
               position: "absolute",
               top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              alignItems: "center",
+              right: 140,
+              transform: "translateY(-50%)",
+              alignItems: "flex-start",
               justifyContent: "center",
             }}
           >
             {/* "Ola {Name}" */}
             <div
               style={{
-                fontFamily: "Times New Roman, serif",
-                fontSize: 80,
+                fontSize: 72,
                 fontWeight: 700,
                 color: "white",
-                textAlign: "center",
+                textAlign: "left",
                 display: "flex",
-                marginBottom: 20,
+                marginBottom: 8,
+                fontFamily: "Georgia, serif",
               }}
             >
               Ola {name}
             </div>
-            
+
             {/* "Your winter upgrade is here." */}
             <div
               style={{
-                fontFamily: "Times New Roman, serif",
-                fontSize: 36,
+                fontSize: 26,
                 fontWeight: 400,
                 color: "white",
-                textAlign: "center",
+                textAlign: "left",
                 display: "flex",
+                fontFamily: "Georgia, serif",
               }}
             >
               Your winter upgrade is here.
